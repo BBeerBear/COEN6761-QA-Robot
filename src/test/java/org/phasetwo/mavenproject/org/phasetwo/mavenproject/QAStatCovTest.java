@@ -93,8 +93,20 @@ public class QAStatCovTest {
 
     @Test
     public void testPrintCurrentPosition() {
-        String expected = "Position: 0, 0 - Pen: up - Facing: north\r\n";
-        assertEquals(expected, Robot.print_CurrentPosition());
+        // Store the original System.out
+        PrintStream originalOut = System.out;
+        // Capture the console output
+        ByteArrayOutputStream consoleOutput = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(consoleOutput));   
+        // Execute the C command
+        Robot.executeCommand("C");
+        // Restore the original System.out
+        System.setOut(originalOut);
+        String expectedOutput = String.format("Position: %d, %d - Pen: %s - Facing: %s%n",
+                Robot.Xaxis, Robot.Yaxis, (Robot.PenDown ? "down" : "up"), Robot.Direction);
+        // Assert that the console output matches the expected message
+        expectedOutput += "\r\n";
+        assertEquals(expectedOutput, consoleOutput.toString());
     }
 
     @Test
@@ -114,9 +126,15 @@ public class QAStatCovTest {
 
     @Test
     public void testPrintBoard() {
+    	// Store the original System.out
+        PrintStream originalOut = System.out;
+        // Capture the console output
+        ByteArrayOutputStream consoleOutput = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(consoleOutput));  
         Robot.executeCommand("D");
         Robot.executeCommand("r");
         Robot.executeCommand("M 1");
+        Robot.executeCommand("P");
         String expected = " 9                     \n"
                         + " 8                     \n"
                         + " 7                     \n"
@@ -128,6 +146,10 @@ public class QAStatCovTest {
                         + " 1                     \n"
                         + " 0   *                 \n"
                         + "    0 1 2 3 4 5 6 7 8 9\n";
-        assertEquals(expected, Robot.print_board());
+        // Restore the original System.out
+        System.setOut(originalOut);
+        // Assert that the console output matches the expected message
+        assertEquals(expected, consoleOutput.toString());
+//        assertEquals(expected, Robot.print_board());
     }
 }

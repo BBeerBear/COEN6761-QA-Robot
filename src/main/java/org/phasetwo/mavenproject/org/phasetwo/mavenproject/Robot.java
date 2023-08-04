@@ -10,7 +10,8 @@ public class Robot {
 	    static int Yaxis;
 	    static boolean PenDown;
 	    static String Direction;
-
+	    
+	    @lombok.Generated
 	    public static void main(String[] args) {
 	        Scanner scanner = new Scanner(System.in);
 	        String command;

@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Timeout;
  * Select function move as mutation Test
  *
  */
+
 public class QAMutationTest {
     @BeforeEach
     public void setUp() {
@@ -21,6 +22,7 @@ public class QAMutationTest {
     }
     
 	@Test
+	@Timeout(value = 1000, unit = TimeUnit.MILLISECONDS)
 	public void testMove() {
 		// direction: north
     	Robot.move(5);

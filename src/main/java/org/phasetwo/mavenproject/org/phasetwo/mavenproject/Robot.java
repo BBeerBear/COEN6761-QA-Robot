@@ -11,7 +11,7 @@ public class Robot {
 	    static boolean PenDown;
 	    static String Direction;
 	    
-	    @lombok.Generated
+	    @Generated
 	    public static void main(String[] args) {
 	        Scanner scanner = new Scanner(System.in);
 	        String command;

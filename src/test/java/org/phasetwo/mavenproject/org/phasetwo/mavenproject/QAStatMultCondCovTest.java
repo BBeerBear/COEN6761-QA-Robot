@@ -13,7 +13,7 @@ public class QAStatMultCondCovTest {
 	
 	@BeforeEach
     public void setUp() {
-    	Robot.executeCommand("I 10");
+    	robot.executeCommand("I 10");
     }
 	
 	@Test
@@ -57,11 +57,11 @@ public class QAStatMultCondCovTest {
     
     @Test
     public void testTurnRight() {
-    	Robot.executeCommand("R");
+    	Robot.executeCommand("r");
         assertEquals("east", Robot.Direction);
         Robot.executeCommand("r");
         assertEquals("south", Robot.Direction);
-        Robot.executeCommand("R");
+        Robot.executeCommand("r");
         assertEquals("west", Robot.Direction);
         Robot.executeCommand("r");
         assertEquals("north", Robot.Direction);
@@ -97,7 +97,7 @@ public class QAStatMultCondCovTest {
 	    
 	    //east movements
 	    Robot.executeCommand("u");
-	    Robot.executeCommand("R"); // Turn right to face east
+	    Robot.executeCommand("r"); // Turn right to face east
 	    Robot.executeCommand("m 1"); // Move east 5 steps
 	   
 	    assertEquals(1, Robot.Xaxis);
@@ -114,7 +114,7 @@ public class QAStatMultCondCovTest {
 	    
 //south movements
 	    Robot.executeCommand("u");
-	    Robot.executeCommand("R"); // Turn right to face south
+	    Robot.executeCommand("r"); // Turn right to face south
 	    Robot.executeCommand("M 3"); // Move south 3 steps
 	    assertEquals(7-3, Robot.Yaxis); // Y should decrease by 3 when moving South
 	    for (int i = 7-3; i <= 7-1; i++) {
@@ -129,7 +129,7 @@ public class QAStatMultCondCovTest {
 	    
 	    //west movements
 	    Robot.executeCommand("d");
-	    Robot.executeCommand("R"); // Turn right to face west
+	    Robot.executeCommand("r"); // Turn right to face west
 	    Robot.executeCommand("M 3"); // Move west 3 steps
 	    assertEquals(5-3, Robot.Xaxis); // X should decrease by 3 when moving West
 	    for (int i = 5-3; i <= 5-1; i++) {
